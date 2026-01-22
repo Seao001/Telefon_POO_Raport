@@ -1,0 +1,120 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Telefon {
+private:
+    string brand;
+    string model;
+    string culoare;
+    int memorie;
+    float pret;
+    int android;
+public:
+
+    Telefon() {
+        brand = "Necunoscut";
+        model = "Necunoscut";
+        culoare = "Necunoscut";
+        android = 0;
+        memorie = 0;
+        pret = 0;
+    }
+
+    Telefon(string b, string m, string c, int memory, float p, int andr) {
+        brand = b;
+        model = m;
+        culoare = c;
+        setMemorie(memory);
+        pret = p;
+        android = andr;
+    }
+
+    Telefon(string b, string m, float price, int andr) {
+        brand = b;
+        model = m;
+        pret = price;
+        culoare = "Necunoscut";
+        memorie = 64;
+        android = andr;
+    }
+    
+    Telefon(string b, string m, float p) {
+        brand = b;
+        model = m;
+        pret = p;
+        culoare = "Alb";
+        memorie = 128;
+        android = 14;
+    }
+
+        ~Telefon() {
+        cout << "\nTelefonul " << model << " a fost sters." << endl;
+    }
+
+    void afisare() {
+        cout << "Brand: " << brand << endl;
+        cout << "Model: " << model << endl;
+        cout << "Culoare: " << culoare << endl;
+        cout << "Memorie: " << memorie << " GB" << endl;
+        cout << "Pret: " << pret << " lei" << endl;
+        
+        
+        if (brand == "Apple" || brand == "apple") {
+            cout << "Sistem: iOS (Nu are Android)";
+        } else if (android >= 16) {
+            cout << "Versiune Noua";
+        } else if (android > 0) {
+            cout << "Versiune Veche";
+        } else {
+            cout << "Versiunea nu poate fi nula";
+        }
+
+        
+
+    cout << endl;
+    }
+
+    void setPret(float p) {
+        if (p >= 0) {
+        pret = p;
+    } else {
+        cout << "Pretul nu poate fi negativ!" << endl;
+    }
+    }
+
+    float getPret() {
+        return pret;
+    }
+
+    void setMemorie(int memory) {
+        if (memory == 16 || memory == 32 || memory == 64|| memory == 128 || memory == 256 || memory == 512 || 
+        memory == 1024) {
+        memorie = memory;
+        } else { memory = -1 ;}
+    }
+    
+    int getMemorie() {
+        return memorie;
+    }
+
+};
+
+int main() {
+    Telefon t1("Samsung", "Galaxy S24+", "Galben", 16, 19000,16);
+    Telefon t2("apple", "iPhone 13",12000,14);
+    Telefon t3("Apple","iPhone 16 pro",20000);
+    
+    cout << endl;
+    cout << "Telefon 1:" << endl;
+    t1.afisare();
+    cout << endl;
+    cout << "Telefon 2:" << endl;
+    t2.afisare();
+    cout << endl;
+    cout << "Telefon 3:" << endl;
+    t3.afisare();
+
+    return 0;
+}
+
